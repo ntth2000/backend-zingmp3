@@ -1,0 +1,10 @@
+const express = require("express");
+const zingmp3 = require("zingmp3-api");
+const router = express.Router();
+const homeController = require("../controllers/homeController");
+router.get("/", homeController.getHome);
+router.get("/top100", homeController.top100);
+router.get("/new-releases", homeController.newReleases);
+router.get("/zing-chart", homeController.zingChart);
+router.get("/song/:id", homeController.songDetail);
+module.exports = router;
