@@ -1,7 +1,6 @@
 const express = require("express");
 const zingmp3 = require("zingmp3-api");
 const router = express.Router();
-const Singer = require("../model/Singer");
 
 router.get("/song/:id", async (req, res) => {
   try {
@@ -38,7 +37,7 @@ router.get("/top100", async (req, res) => {
     res.status(400).json(error);
   }
 });
-router.get("/singer/:name", async (req, res) => {
+router.get("/:name", async (req, res) => {
   const { name } = req.params;
   try {
     const singer = await zingmp3.getDetailArtist(name);
