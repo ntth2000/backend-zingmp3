@@ -71,9 +71,9 @@ const userController = {
     }
   },
   //update recent song
-  updateRecentSong: async (req, res) => {
+  updateRecentSongs: async (req, res) => {
     const { userId } = req.params;
-    const { songId } = req.body;
+    const { songId, action } = req.body;
     try {
       const { recentSongs } = await User.findById(userId);
       let songIndex = -1;
@@ -83,15 +83,30 @@ const userController = {
           return;
         }
       });
-      if (songIndex !== -1) {
-        recentSongs.splice(songIndex, 1);
+      if (songIndex === 0 && action === "add") {
+        return;
       }
-      const { streaming, ...songDetail } = await ZingMp3.getFullInfo(songId);
-
-      const updatedUser = await User.findByIdAndUpdate(userId, {
-        recentSongs: [songDetail, ...recentSongs],
-      });
-      res.status(200).json(updatedUser);
+      if (songIndex !== -1) {
+        if (action === "delete") {
+          recentSongs.splice(songIndex, 1);
+          await User.findByIdAndUpdate(userId, { recentSongs });
+          res.status(200).json("Remove from recent songs");
+        }
+        if (action === "add") {
+          const currentSong = recentSongs[songIndex];
+          recentSongs.splice(songIndex, 1);
+          await User.findByIdAndUpdate(userId, {
+            recentSongs: [currentSong, ...recentSongs],
+          });
+          res.status(200).json("Remove from recent songs");
+        }
+      } else {
+        const { streaming, ...songDetail } = await ZingMp3.getFullInfo(songId);
+        await User.findByIdAndUpdate(userId, {
+          recentSongs: [songDetail, ...recentSongs],
+        });
+        res.status(200).json("Add to recent songs");
+      }
     } catch (error) {
       console.log(error);
       res.status(401).json("Something went wrong. Can't update recent songs!");
@@ -100,28 +115,43 @@ const userController = {
   //update recent playlist
   updateRecentPlaylists: async (req, res) => {
     const { userId } = req.params;
-    const { playlistId } = req.body;
+    const { playlistId, action } = req.body;
     try {
       const user = await User.findById(userId);
       const { recentPlaylists } = user;
-
       let playlistIndex = -1;
       recentPlaylists.forEach((item, index) => {
-        if (item.encodeId === playlistId) {
+        if (!!item && item.encodeId === playlistId) {
           playlistIndex = index;
           return;
         }
       });
-      if (playlistIndex !== -1) {
-        recentPlaylists.splice(playlistIndex, 1);
+      if (playlistIndex === 0 && action === "add") {
+        return;
       }
-      const { song, ...playlistDetail } = await ZingMp3.getDetailPlaylist(
-        playlistId
-      );
-      const userUpdated = await User.findByIdAndUpdate(userId, {
-        recentPlaylists: [playlistDetail, ...recentPlaylists],
-      });
-      res.status(200).json(userUpdated);
+      if (playlistIndex !== -1) {
+        if (action === "delete") {
+          recentPlaylists.splice(playlistIndex, 1);
+          await User.findByIdAndUpdate(userId, { recentPlaylists });
+          res.status(200).json("Remove from recent playlist");
+        }
+        if (action === "add") {
+          const currentPlaylist = recentPlaylists[playlistIndex];
+          recentPlaylists.splice(playlistIndex, 1);
+          await User.findByIdAndUpdate(userId, {
+            recentPlaylists: [currentPlaylist, ...recentPlaylists],
+          });
+          res.status(200).json("add to recent playlist");
+        }
+      } else {
+        const { song, ...playlistDetail } = await ZingMp3.getDetailPlaylist(
+          playlistId
+        );
+        await User.findByIdAndUpdate(userId, {
+          recentPlaylists: [playlistDetail, ...recentPlaylists],
+        });
+        res.status(200).json("Add to recent playlist");
+      }
     } catch (error) {
       console.log(error);
       res

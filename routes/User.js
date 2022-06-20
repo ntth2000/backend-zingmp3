@@ -8,9 +8,9 @@ const {
 router.post("/register", userController.createUser);
 // router.put("/:id", verifyTokenAndUserAuthorization, userController.updateUser);
 router.put(
-  "/:userId/song",
+  "/:userId/recentSongs",
   verifyTokenAndUserAuthorization,
-  userController.updateRecentSong
+  userController.updateRecentSongs
 );
 router.get(
   "/:userId/recentSongs",
@@ -18,7 +18,7 @@ router.get(
   userController.getRecentSongs
 );
 router.put(
-  "/:userId/playlist",
+  "/:userId/recentPlaylists",
   verifyTokenAndUserAuthorization,
   userController.updateRecentPlaylists
 );

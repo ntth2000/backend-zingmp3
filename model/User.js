@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema(
     favoriteSongs: {
       type: [{ type: Object }],
     },
+    avatar: {
+      type: String,
+      default: "https://i.imgur.com/dGo8DOk.jpg",
+    },
   },
   { timestamps: true }
 );

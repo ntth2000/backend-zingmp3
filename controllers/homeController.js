@@ -43,6 +43,15 @@ const homeController = {
       res.status(400).json(error);
     }
   },
+  getCardInfo: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const songDetail = await ZingMp3.getCardInfo(id);
+      res.status(200).json(songDetail);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  },
   getStreaming: async (req, res) => {
     try {
       const { id } = req.params;
