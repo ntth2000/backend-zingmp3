@@ -28,8 +28,8 @@ const authController = {
           id: user._id,
           isAdmin: user.isAdmin,
         },
-        process.env.JWT_KEY,
-        { expiresIn: "5 days" }
+        process.env.JWT_KEY
+        // { expiresIn: "5 days" }
       );
       const { password, createdAt, updatedAt, ...info } = user._doc;
       if (decryptedPassword === req.body.password) {

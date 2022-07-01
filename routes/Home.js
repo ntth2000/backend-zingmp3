@@ -1,5 +1,4 @@
 const express = require("express");
-const zingmp3 = require("zingmp3-api");
 const router = express.Router();
 const homeController = require("../controllers/homeController");
 router.get("/home", homeController.getHome);

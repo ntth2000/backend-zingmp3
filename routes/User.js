@@ -6,7 +6,6 @@ const {
   verifyTokenAndUserAuthorization,
 } = require("../verifyToken");
 router.post("/register", userController.createUser);
-// router.put("/:id", verifyTokenAndUserAuthorization, userController.updateUser);
 router.put(
   "/:userId/recentSongs",
   verifyTokenAndUserAuthorization,
