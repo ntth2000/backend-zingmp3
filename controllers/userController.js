@@ -1,7 +1,7 @@
 const User = require("../model/User");
 const jwt = require("jsonwebtoken");
 const CryptoJS = require("crypto-js");
-const ZingMp3 = require("zingmp3-api");
+const ZingMp3 = require("custom-zingmp3-api");
 const userController = {
   //create user
   createUser: async (req, res) => {

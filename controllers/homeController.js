@@ -1,4 +1,4 @@
-const ZingMp3 = require("zingmp3-api");
+const ZingMp3 = require("custom-zingmp3-api");
 const homeData = require("../data/Home");
 const zingChart = require("../data/ZingChart");
 const homeController = {
@@ -113,6 +113,14 @@ const homeController = {
       res.status(400).json(error);
     }
   },
+  getArtistFullInfo: async (req, res) => {
+    const { name } = req.params;
+    try {
+      const singer = await ZingMp3.getDetailArtist(name);
+      res.status(200).json(singer);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  },
 };
-
 module.exports = homeController;

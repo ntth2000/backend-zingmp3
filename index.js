@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
-var cors = require("cors");
+const path = require("path");
+const cors = require("cors");
 const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/User");
@@ -22,9 +23,14 @@ mongoose
     console.log("DB connection has errors");
     console.log(error);
   });
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/", homeRoutes);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 const port = process.env.PORT || 8800;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

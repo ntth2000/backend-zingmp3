@@ -16,5 +16,6 @@ router.get("/getlist", homeController.songList);
 router.get("/search", homeController.search);
 router.get("/searchDetail", homeController.searchDetail);
 router.get("/card-info/:id", homeController.getCardInfo);
+router.get("/artist/:name", homeController.getArtistFullInfo);
 
 module.exports = router;
