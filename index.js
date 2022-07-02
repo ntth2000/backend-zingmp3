@@ -1,6 +1,5 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/User");
@@ -24,6 +23,8 @@ mongoose
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/", homeRoutes);
-
+app.get("/hello/", (req, res) => {
+  res.status(200).json({ msg: "success" });
+});
 const port = process.env.PORT || 8800;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
