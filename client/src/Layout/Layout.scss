@@ -1,0 +1,44 @@
+.layout {
+  display: flex;
+  height: calc(100vh - var(--player-height));
+  background-repeat: no-repeat;
+  background-color: var(--layout-bg);
+  background-image: var(--image-bg);
+  background-size: 1920px auto;
+  background-position: left top;
+  position: relative;
+  &.full-height {
+    height: 100vh;
+  }
+}
+.layout-container {
+  position: absolute;
+  left: var(--sidebar-width);
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.layout-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--header-height) var(--layout-content-px) 0;
+  overflow-y: overlay;
+}
+.toast-list {
+  z-index: 14;
+}
+@media (max-width: 63.9375em) {
+  .layout-content {
+    padding-left: var(--layout-content-px);
+    padding-right: var(--layout-content-px);
+  }
+}
+/* mobile < 740px */
+@media (max-width: 46.1875em) {
+  .layout-container {
+    left: 0;
+  }
+}

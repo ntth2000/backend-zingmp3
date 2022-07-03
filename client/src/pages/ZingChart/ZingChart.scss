@@ -1,0 +1,65 @@
+.zing-chart {
+  .title-play-btn {
+    font-size: 1.6rem;
+    height: 40px;
+    width: 40px;
+  }
+}
+.zing-chart-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 40px;
+}
+.zing-chart-title {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: normal;
+  color: var(--title-color);
+}
+.zing-chart-top100 {
+  .media:nth-of-type(10) ~ .media {
+    display: none;
+  }
+
+  &.show-all {
+    .media:nth-of-type(10) ~ .media {
+      display: flex;
+    }
+  }
+  .list {
+    padding-bottom: 20px;
+  }
+}
+
+.zing-chart-week-box {
+  padding: 20px 10px;
+  border-radius: 12px;
+  background-color: var(--chart-box-bg);
+  .zing-chart-header {
+    margin-bottom: 10px;
+    padding-top: 0;
+  }
+  .zing-chart-title {
+    font-size: 2.4rem;
+    margin-left: 40px;
+  }
+  .title-play-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .media-ordinal {
+    width: 32px;
+    margin-right: 5px;
+  }
+  .media-ordinal-separator {
+    margin-right: 15px;
+  }
+
+  .zing-chart-btn {
+    margin-bottom: 0;
+  }
+  .list {
+    margin-bottom: 15px;
+  }
+}

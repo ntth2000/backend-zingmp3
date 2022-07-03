@@ -1,0 +1,95 @@
+body {
+  .artist-name-comp {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+    position: relative;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+      color: var(--link-text-hover);
+    }
+  }
+}
+.artist-popper {
+  width: 348px;
+  padding: 16px 16px 0;
+  margin-bottom: 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2),
+    transparent 60%
+  );
+  .section {
+    margin-bottom: 0;
+    .section-header {
+      margin-bottom: 8px;
+      .section-title {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  .section-content {
+    .artist-popper-item {
+      z-index: 6;
+      flex: 1;
+      .card {
+        margin-bottom: 0;
+        .card-title {
+          font-weight: 400;
+          font-size: 1.2rem;
+        }
+        .card-date {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+.artist-popper-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.artist-popper-info {
+  display: flex;
+  align-items: center;
+}
+.artist-popper-thumb {
+  display: flex;
+  margin-right: 8px;
+}
+.artist-popper-img {
+  width: 48px;
+  height: 48px;
+}
+
+.artist-popper-title {
+  font-size: 1.4rem;
+  display: block;
+}
+.artist-popper-link {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  &:hover {
+    color: var(--link-text-hover);
+  }
+}
+.artist-popper-follow {
+  font-size: 1.2rem;
+}
+.artist-popper-action {
+  margin-left: auto;
+}
+.artist-popper-bio {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-pack: end;
+  -webkit-box-orient: vertical;
+}

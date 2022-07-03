@@ -1,0 +1,40 @@
+.popper-wrapper {
+  box-shadow: 0px 1px 3px 3px rgba(0, 0, 0, 0.05);
+  background-color: var(--menu-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 999;
+}
+.menu-list {
+  width: 240px;
+  padding: 10px 0;
+}
+
+.menu-item {
+  font-weight: 500;
+  padding: 12px 20px;
+  color: var(--nav-text);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+
+  &:hover {
+    background-color: var(--alpha-bg);
+    color: var(--text-item-hover);
+  }
+}
+.menu-icon {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+.menu-icon-more {
+  margin-left: auto;
+}
+.menu-separation {
+  height: 1px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 10px 0;
+}

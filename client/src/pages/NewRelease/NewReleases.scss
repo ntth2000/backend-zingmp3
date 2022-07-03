@@ -1,0 +1,40 @@
+.new-release {
+  margin-bottom: 70px;
+  .title-play-btn {
+    font-size: 1.6rem;
+    height: 40px;
+    width: 40px;
+  }
+}
+.new-release-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 40px;
+}
+.new-release-title {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: normal;
+}
+@media (max-width: 46.1875em) {
+  .new-release {
+    .media-img {
+      width: 50px;
+      height: 50px;
+    }
+    .media-right {
+      display: none;
+    }
+    .media-ordinal {
+      -webkit-text-fill-color: unset;
+      -webkit-text-stroke-width: unset;
+      font-weight: 400;
+      font-size: 1.6rem;
+      width: 30px;
+    }
+  }
+  .new-release-title {
+    font-size: 3.6rem;
+  }
+}

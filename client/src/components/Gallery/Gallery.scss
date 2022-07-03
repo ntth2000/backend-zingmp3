@@ -1,0 +1,140 @@
+.gallery {
+  margin-left: -14px;
+  margin-right: -14px;
+  position: relative;
+
+  &:hover {
+    .arrow {
+      display: inline-flex;
+      cursor: pointer;
+    }
+  }
+  .banner {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+  }
+  .arrow {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 55px;
+    height: 55px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    justify-content: center;
+    align-items: center;
+    line-height: 55px;
+    font-size: 2.6rem;
+
+    &#prev {
+      left: 25px;
+    }
+    &#next {
+      right: 25px;
+    }
+  }
+}
+.gallery-container {
+  aspect-ratio: calc(16 * 3 / 9);
+}
+.gallery-item {
+  width: calc(100% / 3);
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  position: absolute;
+  transition: all 0.5s;
+  opacity: 1;
+  &.prev {
+    left: 0;
+    z-index: 2;
+  }
+  &.current {
+    left: calc(100% / 3);
+    z-index: 3;
+  }
+  &.next {
+    left: calc(100% * 2 / 3);
+    z-index: 2;
+  }
+  &.last {
+    left: calc(100% / 2);
+    z-index: 1;
+    opacity: 0;
+  }
+  &.add {
+    left: calc(100% / 3);
+    z-index: 1;
+    opacity: 0;
+  }
+  &.first {
+    left: calc(100% / 6);
+    z-index: 1;
+    opacity: 0;
+  }
+}
+
+.gallery-modal {
+  width: 330px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gallery-modal-thumbnail {
+  width: 180px;
+  height: 180px;
+  margin: 10px 0px 5px;
+  border-radius: 5px;
+}
+
+.gallery-modal-title {
+  font-weight: 500;
+}
+.gallery-modal-artists {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+.gallery-modal-actions {
+  margin-top: 20px;
+  width: 100%;
+  .gallery-modal-btn {
+    margin: 10px 0 0 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 63.9375em) {
+  .gallery-container {
+    aspect-ratio: calc(16 * 2 / 9);
+  }
+  .gallery-item {
+    width: calc(100% / 2);
+
+    &.current {
+      left: calc(100% / 2);
+      z-index: 3;
+    }
+    &.next {
+      left: calc(100% / 4);
+      z-index: 1;
+      opacity: 0;
+    }
+
+    &.add,
+    &.first,
+    &.last {
+      left: calc(100% / 4);
+    }
+  }
+}

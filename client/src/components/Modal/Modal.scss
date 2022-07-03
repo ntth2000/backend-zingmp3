@@ -1,0 +1,36 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 13;
+  display: flex;
+}
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-content {
+  border-radius: 10px;
+  background-color: var(--menu-bg);
+  margin: auto;
+  position: relative;
+}
+.modal-close {
+  position: absolute !important;
+  top: 15px;
+  right: 15px;
+  z-index: 2;
+}
+@media (max-width: 46.1875em) {
+  .modal-close {
+    top: 5px;
+    right: 5px;
+  }
+}

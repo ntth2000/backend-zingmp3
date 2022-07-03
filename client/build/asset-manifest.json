@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d7771c32.css",
+    "main.js": "/static/js/main.0c30bbe1.js",
+    "static/js/787.71df535f.chunk.js": "/static/js/787.71df535f.chunk.js",
+    "static/media/zma-bg.svg": "/static/media/zma-bg.25bb3b2fd4100cb0b5fa.svg",
+    "static/media/podcast-new-episode-empty.png": "/static/media/podcast-new-episode-empty.85dc5c1954628a5752c4.png",
+    "static/media/logo-light.svg": "/static/media/logo-light.4d5db0d69b4fd70e8e79f946237a9f96.svg",
+    "static/media/logo-dark.svg": "/static/media/logo-dark.bde2ef6325d0e4363a8b25d71dc85b25.svg",
+    "static/media/record-dark.svg": "/static/media/record-dark.d2972d7b80b9d8299730abe93670fadf.svg",
+    "static/media/disc-music-icon.svg": "/static/media/disc-music-icon.6b3aa6ef4614ce25ed635228ec554589.svg",
+    "static/media/music-icon.svg": "/static/media/music-icon.09f402f8af03fad35b5df3a6a2f340b9.svg",
+    "static/media/video-icon.svg": "/static/media/video-icon.31a5694da5af1e85f3148d5563140440.svg",
+    "index.html": "/index.html",
+    "main.d7771c32.css.map": "/static/css/main.d7771c32.css.map",
+    "main.0c30bbe1.js.map": "/static/js/main.0c30bbe1.js.map",
+    "787.71df535f.chunk.js.map": "/static/js/787.71df535f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7771c32.css",
+    "static/js/main.0c30bbe1.js"
+  ]
+}

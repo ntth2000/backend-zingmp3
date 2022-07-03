@@ -1,0 +1,141 @@
+.queue {
+  position: fixed;
+  top: 0;
+  transform: translateX(330px);
+  right: 0;
+  bottom: var(--player-height);
+  width: 330px;
+  z-index: 12;
+  display: flex;
+  transition: transform ease-out 0.5s;
+  flex-direction: column;
+  background-color: var(--queue-bg);
+
+  &.show {
+    transform: translateX(0);
+    box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .media {
+    padding: 8px;
+    border-radius: 5px;
+    opacity: 0.6;
+    &:hover {
+      opacity: 1;
+    }
+    .media-center {
+      display: none;
+    }
+    &:hover {
+      .media-actions {
+        display: flex;
+      }
+    }
+    &.active {
+      opacity: 1;
+      background-color: var(--purple-color);
+      &:hover {
+        background-color: var(--purple-color);
+      }
+      .media-singers {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .media-name {
+        color: var(--white-color);
+      }
+      .artist-name-comp {
+        color: rgba(255, 255, 255, 0.6);
+        &:hover {
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+      .icon {
+        color: var(--white-color);
+      }
+      i.ic-like-full {
+        color: var(--white-color);
+      }
+      & ~ .media {
+        opacity: 1;
+      }
+    }
+  }
+
+  .media-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .media-actions {
+    display: none;
+  }
+}
+.queue-header {
+  padding: 17px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.queue-options {
+  flex: 1;
+  background-color: var(--alpha-bg);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--nav-text);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+}
+.queue-option {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 5px 15px;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: 500;
+    color: var(--text-item-hover);
+  }
+  &.active {
+    font-weight: 500;
+    color: var(--text-item-hover);
+    background-color: var(--tab-active-bg);
+  }
+}
+.queue-clock,
+.queue-more {
+  margin-left: 5px;
+}
+
+.queue-list {
+  padding: 0px 8px 8px 8px;
+  overflow-y: overlay;
+}
+.queue-separation {
+  padding: 12px 8px 0;
+  font-size: 1.4rem;
+}
+.queue-separation-heading {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+.queue-separation-desc {
+  width: 100%;
+  display: flex;
+  color: #a0a0a0;
+  padding-bottom: 5px;
+}
+.queue-separation-title {
+  display: inline-block;
+  max-width: 100%;
+  color: var(--link-text-hover);
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: fit-content;
+  margin-left: 4px;
+  font-weight: 500;
+}
