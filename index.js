@@ -22,7 +22,6 @@ mongoose
     console.log("DB connection has errors");
     console.log(error);
   });
-app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
