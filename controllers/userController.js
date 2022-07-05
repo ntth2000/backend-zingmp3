@@ -11,7 +11,7 @@ const userController = {
       });
       if (findUser)
         return res.status(401).json({
-          msg: "This email has been already registered! Please use another email address.",
+          msg: "Tài khoản email này đã được sử dụng!",
           target: "email",
         });
       const user = await User.create({
