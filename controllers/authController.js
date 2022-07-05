@@ -12,7 +12,7 @@ const authController = {
       //if there is no user
       if (!user) {
         return res.status(401).json({
-          msg: "This email has not been registered yet!",
+          msg: "Tài khoản email này chưa được đăng ký!",
           target: "email",
         });
       }
@@ -39,7 +39,7 @@ const authController = {
         });
       } else {
         res.status(401).json({
-          msg: "Wrong email or password!",
+          msg: "Sai email hoặc mật khẩu!",
           status: "uncompleted",
         });
       }

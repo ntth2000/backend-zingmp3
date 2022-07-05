@@ -21,7 +21,7 @@ const userController = {
           process.env.CRYPTOJS_KEY
         ).toString(),
       });
-      res.status(200).json("Registered successfullly! Welcome to ZingMp3!");
+      res.status(200).json("Đăng ký thành công!");
     } catch (error) {
       console.log(error);
     }
@@ -67,7 +67,7 @@ const userController = {
       const { recentSongs } = user;
       res.status(200).json(recentSongs);
     } catch (error) {
-      res.status(401).json("Something went wrong. Cannot get recent songs!");
+      res.status(401).json("Có lỗi xảy ra. Không thể tải các bài hát gần đây!");
     }
   },
   //update recent song
@@ -90,7 +90,7 @@ const userController = {
         if (action === "delete") {
           recentSongs.splice(songIndex, 1);
           await User.findByIdAndUpdate(userId, { recentSongs });
-          res.status(200).json("Remove from recent songs");
+          res.status(200).json("Xóa khỏi các bài hát gần đây!");
         }
         if (action === "add") {
           const currentSong = recentSongs[songIndex];
@@ -98,18 +98,20 @@ const userController = {
           await User.findByIdAndUpdate(userId, {
             recentSongs: [currentSong, ...recentSongs],
           });
-          res.status(200).json("Remove from recent songs");
+          res.status(200).json("Thêm vào các bài hát gần đây!");
         }
       } else {
         const { streaming, ...songDetail } = await ZingMp3.getFullInfo(songId);
         await User.findByIdAndUpdate(userId, {
           recentSongs: [songDetail, ...recentSongs],
         });
-        res.status(200).json("Add to recent songs");
+        res.status(200).json("Thêm vào các bài hát gần đây!");
       }
     } catch (error) {
       console.log(error);
-      res.status(401).json("Something went wrong. Can't update recent songs!");
+      res
+        .status(401)
+        .json("Đã có lỗi xẩy ra. Không thể cập nhật các bài hát gần đây!");
     }
   },
   //update recent playlist
@@ -133,7 +135,7 @@ const userController = {
         if (action === "delete") {
           recentPlaylists.splice(playlistIndex, 1);
           await User.findByIdAndUpdate(userId, { recentPlaylists });
-          res.status(200).json("Remove from recent playlist");
+          res.status(200).json("Xóa khỏi các playlist gần đây!");
         }
         if (action === "add") {
           const currentPlaylist = recentPlaylists[playlistIndex];
@@ -141,7 +143,7 @@ const userController = {
           await User.findByIdAndUpdate(userId, {
             recentPlaylists: [currentPlaylist, ...recentPlaylists],
           });
-          res.status(200).json("add to recent playlist");
+          res.status(200).json("Thêm vào các bài hát gần đây!");
         }
       } else {
         const { song, ...playlistDetail } = await ZingMp3.getDetailPlaylist(
@@ -150,13 +152,13 @@ const userController = {
         await User.findByIdAndUpdate(userId, {
           recentPlaylists: [playlistDetail, ...recentPlaylists],
         });
-        res.status(200).json("Add to recent playlist");
+        res.status(200).json("Thêm vào các bài hát gần đây!");
       }
     } catch (error) {
       console.log(error);
       res
         .status(401)
-        .json("Something went wrong. Can't update recent playlists!");
+        .json("Đã có lỗi xảy ra. Không thể cập nhật các playlist gần đây!");
     }
   },
   //get recent playlists
@@ -167,7 +169,9 @@ const userController = {
       const { recentPlaylists } = user;
       res.status(200).json(recentPlaylists);
     } catch (error) {
-      res.status(401).json("Something went wrong. Cannot get recent songs!");
+      res
+        .status(401)
+        .json("Đã có lỗi xảy ra. Không thể tải các playlist gần đây!");
     }
   },
 
@@ -264,7 +268,7 @@ const userController = {
     const { id } = req.params;
     try {
       await User.findByIdAndDelete(id);
-      res.status(200).json("user deleted");
+      res.status(200).json("Xóa tài khoản thành công!");
     } catch (error) {
       res.status(500).json(error);
     }
