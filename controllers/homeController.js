@@ -1,4 +1,5 @@
 const ZingMp3 = require("custom-zingmp3-api");
+const { zing } = require("zingmp3-api-next");
 const homeData = require("../data/Home");
 const zingChart = require("../data/ZingChart");
 const homeController = {
@@ -118,6 +119,24 @@ const homeController = {
     try {
       const singer = await ZingMp3.getDetailArtist(name);
       res.status(200).json(singer);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  },
+  getRecommendKeyword: async (req, res) => {
+    try {
+      const { q } = req.query;
+      const result = await zing.get_suggestion_keyword(q);
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  },
+  searchByType: async (req, res) => {
+    try {
+      const { q, type } = req.query;
+      const result = await zing.search_by_type(q, type);
+      res.status(200).json(result);
     } catch (error) {
       res.status(400).json(error);
     }
