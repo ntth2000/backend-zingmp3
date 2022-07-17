@@ -134,8 +134,8 @@ const homeController = {
   },
   searchByType: async (req, res) => {
     try {
-      const { q, type } = req.query;
-      const result = await zing.search_by_type(q, type);
+      const { q, type, page } = req.query;
+      const result = await zing.search_by_type(q, type, page);
       res.status(200).json(result);
     } catch (error) {
       res.status(400).json(error);
