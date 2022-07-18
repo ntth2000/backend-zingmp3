@@ -17,15 +17,25 @@ const UserSchema = new mongoose.Schema(
       min: 6,
       max: 20,
     },
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
+    // isAdmin: {
+    //   type: Boolean,
+    //   default: false,
+    // },
     recentPlaylists: {
-      type: [{ type: String }],
+      type: [{ type: Object }],
     },
     recentSongs: {
-      type: [{ type: String }],
+      type: [{ type: Object }],
+    },
+    favoritePlaylists: {
+      type: [{ type: Object }],
+    },
+    favoriteSongs: {
+      type: [{ type: Object }],
+    },
+    avatar: {
+      type: String,
+      default: "https://i.imgur.com/dGo8DOk.jpg",
     },
   },
   { timestamps: true }

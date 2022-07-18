@@ -1,10 +1,57 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
+const {
+  verifyTokenAndAdmin,
+  verifyTokenAndUserAuthorization,
+} = require("../verifyToken");
+router.post("/register", userController.createUser);
+router.put(
+  "/:userId/recentSongs",
+  verifyTokenAndUserAuthorization,
+  userController.updateRecentSongs
+);
+router.get(
+  "/:userId/recentSongs",
+  verifyTokenAndUserAuthorization,
+  userController.getRecentSongs
+);
+router.put(
+  "/:userId/recentPlaylists",
+  verifyTokenAndUserAuthorization,
+  userController.updateRecentPlaylists
+);
+router.get(
+  "/:userId/recentPlaylists",
+  verifyTokenAndUserAuthorization,
+  userController.getRecentPlaylists
+);
+router.put(
+  "/:userId/favoritePlaylists",
+  verifyTokenAndUserAuthorization,
+  userController.updateFavoritePlaylists
+);
+router.get(
+  "/:userId/favoritePlaylists",
+  verifyTokenAndUserAuthorization,
+  userController.getFavoritePlaylists
+);
+router.put(
+  "/:userId/favoriteSongs",
+  verifyTokenAndUserAuthorization,
+  userController.updateFavoriteSongs
+);
+router.get(
+  "/:userId/favoriteSongs",
+  verifyTokenAndUserAuthorization,
+  userController.getFavoriteSongs
+);
+router.get("/:userId", verifyTokenAndUserAuthorization, userController.getUser);
 
-router.post("/", userController.createUser);
-router.put("/:id", userController.updateUser);
-router.get("/:id", userController.getUser);
-router.get("/", userController.getAllUsers);
-router.delete("/:id", userController.deleteUser);
+router.get("/", verifyTokenAndAdmin, userController.getAllUsers);
+router.delete(
+  "/:userId",
+  verifyTokenAndUserAuthorization,
+  userController.deleteUser
+);
 module.exports = router;
